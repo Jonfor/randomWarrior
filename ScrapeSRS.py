@@ -10,7 +10,8 @@ submissions = r.get_subreddit('shitredditsays').get_top(limit=10)
 all_submis = []
 for jarb in submissions:
     submission = jarb.comments
-    all_submis.append(submission)
+    flat_comments = praw.helpers.flatten_tree(submission)
+    all_submis.append(flat_comments)
 
 yaywords = []
 for i in all_submis:
